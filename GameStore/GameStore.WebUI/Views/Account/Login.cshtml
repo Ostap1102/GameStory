@@ -1,0 +1,28 @@
+﻿@model GameStore.WebUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel2" style="background-color:azure">
+    <div class="panel-heading">
+        <h3>Вхід в систему</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">Війдіть буль-ласка в систему:</p>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Імя користувача:</label>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Пароль:</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <input type="submit" value="Увійти" class="btn btn-primary" />
+        }
+    </div>
+</div>

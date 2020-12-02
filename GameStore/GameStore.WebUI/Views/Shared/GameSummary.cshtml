@@ -1,0 +1,27 @@
+﻿@model GameStore.Domain.Entities.Game
+<div style="background-color:mintcream">
+    <div class="well card">
+        @if (Model.ImageData != null)
+        {
+            <div class="pull-left" style="margin-right: 10px">
+                <img class="img-thumbnail" width="125" height="120"
+                     src="@Url.Action("GetImage", "Game",
+                new { Model.GameId })" />
+            </div>
+        }
+
+        <h3>
+            <strong>@Model.Name</strong>
+            <span class="pull-right label label-primary">@Model.Price.ToString("# грн")</span>
+        </h3>
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            <div class="pull-right">
+                @Html.HiddenFor(x => x.GameId)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-warning" value="Додати в корзину" />
+            </div>
+        }
+        <span class="lead">@Model.Description</span>
+    </div>
+</div>

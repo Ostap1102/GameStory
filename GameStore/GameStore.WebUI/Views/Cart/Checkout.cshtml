@@ -1,0 +1,58 @@
+﻿
+@model GameStore.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "GameStore: форма Замовлення";
+}
+<div style="background-color:azure">
+
+<h2>Здвйснити замовлення зараз</h2>
+<p>Будь-ласка ведіть контактні данні, і ми відразу відправимо вам замолення(Замовлення відправляються по Новій пошті, оплата Післяплата у відділенні після перевірки товару</p>
+<p>Ми турбуємося за безпеку ваших коштів</p>
+
+
+@using (Html.BeginForm())
+
+{
+    @Html.ValidationSummary();
+    <h3>Особисті данні</h3>
+    <div class="form-group">
+        <label>Ваше Імя:</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+
+    <h3>Адрес доставки</h3>
+    <div class="form-group">
+        <label>Адрес(Вулиця,будинок,квартира(Приклад:Свободи,5,3)):</label>
+        @Html.TextBoxFor(x => x.Line1, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Телефон(Приклад:+380ххххххххх):</label>
+        @Html.TextBoxFor(x => x.Line2, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>E-mail:</label>
+        @Html.TextBoxFor(x => x.Line3, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Місто:</label>
+        @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Адрес поштового відділення:</label>
+        @Html.TextBoxFor(x => x.vid, new { @class = "form-control" })
+    </div>
+
+    <h3>Опції</h3>
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            використовувати подарункову упаковку?
+        </label>
+    </div>
+    <p>Переконайтесь будь-ласка у вірності заповнених данних</p>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Обробити замовлення" />
+    </div>
+}
+</div>
